@@ -37,7 +37,7 @@ gulp.task('clean', () => del('report/**'));
 
 
 gulp.task('test:coverage:prepare', () => {
-    return gulp.src(sources)
+    return gulp.src(testSources)
         .pipe(istanbul({
             includeUntested: true
         }))

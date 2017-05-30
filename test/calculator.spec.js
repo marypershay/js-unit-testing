@@ -1,23 +1,31 @@
 'use strict';
 
-let someClass = require('../index');
+let Calculator = require('../src/Calculator');
 
-describe('someClass', () => {
-    let instance;
+describe('CalculatorClass', () => {
+    let calculator;
 
     beforeAll(() => {
-        instance = new someClass();
+        calculator = new Calculator();
     });
 
-    it('should allow to call doSomething() for instance of class', () => {
-        expect(instance.doSomething).toBeDefined();
-        expect(typeof instance.doSomething).toBe('function');
-        expect(instance.doSomething()).toBe('I did something !');
+    it('should display properly work of add() method', () => {
+        expect(calculator.add(1)).toBe(1);
+        expect(calculator.add(-1, 8)).toBe(7);
+        expect(calculator.add(0)).toBe(0);
+        expect(calculator.add(-1, -9)).toBe(-10);
+        expect(calculator.add(1, 9)).toBe(10);
+        expect(calculator.add(1, 9, 12)).toBe(22);
+        expect(calculator.add(1, 9, 12.2)).toBe(22.2);
     });
 
-    it('should allow to call oneMoreThingToDo() for instance of class', () => {
-        expect(instance.oneMoreThingToDo).toBeDefined();
-        expect(typeof instance.oneMoreThingToDo).toBe('function');
-        expect(instance.oneMoreThingToDo()).toBe('I did something else !');
+    it('should display properly work of multiply() method', () => {
+        expect(calculator.multiply(1)).toBe(1);
+        expect(calculator.multiply(-1, 8)).toBe(-8);
+        expect(calculator.multiply(0)).toBe(0);
+        expect(calculator.multiply(-1, -9)).toBe(9);
+        expect(calculator.multiply(1, 9)).toBe(9);
+        expect(calculator.multiply(0, 9)).toBe(0);
+        expect(calculator.multiply(1, 9, 2.2)).toBe(19.8);
     });
 });
