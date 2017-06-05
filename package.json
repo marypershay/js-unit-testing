@@ -16,6 +16,10 @@
     "gulp": "^3.9.1",
     "gulp-istanbul": "^0.10.3",
     "gulp-jasmine": "^2.3.0",
+    "xlsx": "0.10.4",
+    "js-yaml": "3.8.4",
+    "node-csv": "0.1.2",
+    "properties": "1.2.1",
     "jasmine-reporters": "^2.1.1"
   },
   "engines": {

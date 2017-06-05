@@ -8,14 +8,20 @@ const readData = require(path.resolve('lib/readData'));
 
 describe('readData', () => {
 
-    it('should read data from from properties file', () => {
-        let data = readData('somefile.properties');
-        expect(data).toBe('data from properties file');
+    it('should read data from from properties file', (done) => {
+        let fileData = readData('test/test-data/test.properties');
+        fileData.then((data) => {
+            expect(data['data']).toBe('data from properties file');
+            done();
+        });
     });
 
-    it('should read data from from csv file', () => {
-        let data = readData('somefile.csv');
-        expect(data).toBe('data from csv file');
+    it('should read data from from csv file', (done) => {
+        let fileData = readData('test/test-data/test.csv');
+        fileData.then((data) => {
+            expect(data[0][0]).toBe('data,from,csv,file');
+            done();
+        });
     });
 
     it('should read data from from json file', () => {
@@ -24,12 +30,12 @@ describe('readData', () => {
     });
 
     it('should read data from from yml file', () => {
-        let data = readData('somefile.yml');
+        let data = readData('test/test-data/test.yml');
         expect(data).toBe('data from yml file');
     });
 
     it('should read data from from xlsx file', () => {
-        let data = readData('somefile.xlsx');
-        expect(data).toBe('data from xlsx file');
+        let data = readData('test/test-data/Book1.xlsx');
+        expect(data.Sheets.Sheet1).toBe('data from xlsx file');
     });
 });
